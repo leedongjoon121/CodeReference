@@ -12,6 +12,8 @@ Comparable을 구현하고 있는 클래스들은 같은 타입의 인스턴스�
 ### 2.리스트 형태 기준 ArrayList
 Collections.sort()를 적용해야 한다.
 
+
+### Comparable을 이용한 정렬 
 Comparable을 Implements한 뒤 compareTo 메소드를 구현하여 해결한다.
 
 ```swift
@@ -87,3 +89,87 @@ public class Main  {
 
 ```
 
+### Comparator를 이용한 정렬 
+
+```swift
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+
+class SoccerPlayer { 
+	
+   // 정렬 기준을 이름, 포지션, 나이로 잡는다.	
+   private String name;
+   private String position;
+   private int age;
+   
+   public SoccerPlayer(String name, String position, int age) {
+	   this.name = name;
+	   this.position = position;
+	   this.age = age;
+   }
+   
+	public String getName() { return name; }
+
+	public void setName(String name) { this.name = name; }
+
+	public String getPosition() { return position; }
+
+	public void setPosition(String position) { this.position = position; }
+
+	public int getAge() { return age; }
+
+	public void setAge(int age) { this.age = age; }
+	
+}
+
+public class Main  {
+	
+	public static void main(String[] args)  {
+    	
+	    ArrayList<SoccerPlayer> SPList = new ArrayList<SoccerPlayer>();
+	    
+	    SoccerPlayer sp1 = new SoccerPlayer("손흥민","SS",27);
+	    SoccerPlayer sp2 = new SoccerPlayer("기성용","MF",30);
+	    SoccerPlayer sp3 = new SoccerPlayer("차범근","FW",50);
+	    
+	    SPList.add(sp1);
+	    SPList.add(sp2);
+	    SPList.add(sp3);
+	    
+	    // Comparator를 이용하여 정렬한다.
+	    Collections.sort(SPList, new Comparator<SoccerPlayer>() { // Object의 특정 변수 기준으로 정렬시 
+
+			@Override
+			public int compare(SoccerPlayer player1, SoccerPlayer player2) {
+			
+				if(player1.getAge() > player2.getAge()) {
+					return 1;
+				}else if(player1.getAge() < player2.getAge()) {
+					return -1;
+				}else {
+					return 0;	
+				}
+				
+			}
+	    	
+	    });
+	    
+	    for(int i = 0; i<SPList.size(); i++) {
+	    	   System.out.println(SPList.get(i).getName() + "-"+SPList.get(i).getPosition() + "-"+SPList.get(i).getAge());
+	    }
+	    
+	}	
+
+	
+}
+
+```
+
+```
+[결과]
+손흥민-SS-27
+기성용-MF-30
+차범근-FW-50
+```
