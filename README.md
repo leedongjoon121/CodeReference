@@ -12,6 +12,7 @@ Comparable을 구현하고 있는 클래스들은 같은 타입의 인스턴스�
 ### 2.리스트 형태 기준 ArrayList
 Collections.sort()를 적용해야 한다.
 
+Comparable을 Implements한 뒤 compareTo 메소드를 구현하여 해결한다.
 
 ```swift
 import java.util.ArrayList;
@@ -75,6 +76,14 @@ public class Main  {
 	}	
 	
 }
+
+```
+
+```
+[결과]
+기성용-MF-30
+손흥민-SS-27
+차범근-FW-50
 
 ```
 
