@@ -1,7 +1,20 @@
 # 자바 정렬
 
-### Comparable : 기본 정렬기준을 구현하는데 사용.
-### Comparator : 기본 정렬기준 외에 다른 기준으로 정렬하고자 할 때 사용.
+## Comparable : 기본 정렬기준을 구현하는데 사용.
+- 정의 : 정렬 수행시 기본적으로 적용되는 정렬 기준이 되는 메서드를 정의해 놓은 인터페이스
+- 사용법 : Comparable 인터페이스를 implements한 뒤, 내부에 있는 compareTo메서드를 원하는 정렬 기준대로 구현
+- 패키지 : java.lang.Comparable
+- 자바에서 제공되는 정렬리 가능한 클래스들은 모두 Comparable인터페이스를 구현하고 있으며, 정렬시에 Comparable의 구현 내용에 맞춰 정렬 수행
+   
+
+## Comparator : 기본 정렬기준 외에 다른 기준으로 정렬하고자 할 때 사용.
+- 정의 : 정렬 가능한 클래스(Comparable이 구현된 클래스)들의 기본 정렬 기준과 다른 방식으로 정렬하고 싶을때 사용하는 클래스
+- 사용법 : Comparator클래스를 생성하여, 내부에 compare메서드를 원하는 정렬 기준대로 구현 
+- 패키지 : java.util.Comparator
+- 주로 익명클래스(new Comparator(){...})로 사용됨
+
+
+<hr/>
 
 ### 1.배열기준 Array
 Arrays.sort()는 String의 Comparable 구현에 의해 정렬된 것이다.
@@ -22,7 +35,8 @@ import java.util.Collections;
 
 
 class SoccerPlayer implements Comparable<SoccerPlayer>{ // Comparable 을 implements 한다.
-	
+   //  SoccerPlayer 클래스들 끼리 비교하는 것이므로 제네릭스 타입도 SoccerPlayer가 된다.
+
    // 정렬 기준을 이름, 포지션, 나이로 잡는다.	
    private String name;
    private String position;
